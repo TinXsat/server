@@ -1,4 +1,14 @@
 """
 I guess that's the only file that will ever be here haha
 """
-print('TinX SATELLITE ENTERPRISE SERVER')
+from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello_there():
+    return 'Hello from TinX server!'
+
+
+app.run()
