@@ -1,1 +1,3 @@
 Flask
+flask-restplus
+Werkzeug==0.16.1  # Newer version (installed by flask-restplus) is broken

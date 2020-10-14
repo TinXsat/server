@@ -2,38 +2,40 @@
 I guess that's the only file that will ever be here haha
 """
 from flask import Flask
+from flask_restplus import Api, Resource
 
 app = Flask(__name__)
+api = Api(app)
 
 
-@app.route('/')
-def hello_there():
-    return 'Hello from TinX server!'
+@api.route('/satellite')
+class Satellite(Resource):
+    def get(self):
+        return {'connected': True}
 
 
-@app.route('/satellite')
-def satellite():
-    return {'connected': True}
+@api.route('/satellite/battery')
+class SatelliteBattery(Resource):
+    def get(self):
+        return {'percentage': 69}
 
 
-@app.route('/satellite/battery')
-def satellite_battery():
-    return {'percentage': 69}
+@api.route('/satellite/cpu/temperature')
+class SatelliteCpuTemperature(Resource):
+    def get(self):
+        return {'celsius': 47}
 
 
-@app.route('/satellite/cpu/temperature')
-def satellite_cpu_temperature():
-    return {'celsius': 47}
+@api.route('/satellite/lora/signal')
+class SatelliteLoraSignal(Resource):
+    def get(self):
+        return {'rssi': -81}
 
 
-@app.route('/satellite/lora/signal')
-def satellite_lora_signal():
-    return {'rssi': -81}
-
-
-@app.route('/satellite/location')
-def satellite_location():
-    return {'latitude': 49.88345, 'longitude': 19.49253, 'height': 2137}
+@api.route('/satellite/location')
+class SatelliteLocation(Resource):
+    def get(self):
+        return {'latitude': 49.88345, 'longitude': 19.49253, 'height': 2137}
 
 
 if __name__ == '__main__':
