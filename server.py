@@ -11,4 +11,5 @@ def hello_there():
     return 'Hello from TinX server!'
 
 
-app.run()
+if __name__ == '__main__':
+    app.run()
